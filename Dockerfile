@@ -1,11 +1,13 @@
-# Gunakan Keycloak sebagai base image
 FROM quay.io/keycloak/keycloak:latest
 
 # Set working directory
 WORKDIR /opt/keycloak
 
-# Expose port untuk Keycloak
+# Gunakan port 80 untuk Keycloak
+ENV KC_HTTP_PORT=80
+
+# Expose port 80
 EXPOSE 80
 
-# Command untuk menjalankan Keycloak dalam mode development
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+# Jalankan Keycloak dengan parameter untuk port 80
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=80"]
