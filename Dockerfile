@@ -3,12 +3,12 @@ FROM quay.io/keycloak/keycloak:latest
 # Set working directory
 WORKDIR /opt/keycloak
 
-# Gunakan port 80 untuk Keycloak
-ENV KC_HTTP_PORT=80
+# Gunakan port yang disediakan Cloud Run (via env variable `PORT`)
+ENV KC_HTTP_PORT=$PORT
 
-# Expose port 80
+# Expose port untuk container
 EXPOSE 80
 
-# Jalankan Keycloak dengan parameter untuk port 80
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=80"]
+# Jalankan Keycloak dengan port dari `PORT`
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=$PORT"]
 USER 0  # Jalankan container sebagai root
