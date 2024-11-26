@@ -10,4 +10,4 @@ ENV KC_HTTP_PORT=$PORT
 EXPOSE 8080
 
 # Jalankan Keycloak menggunakan port yang diberikan oleh Cloud Run
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=$PORT"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=8080"]
