@@ -11,4 +11,4 @@ EXPOSE 80
 
 # Jalankan Keycloak dengan port dari `PORT`
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=80"]
-USER 0  # Jalankan container sebagai root
+USER 0
